@@ -1,13 +1,13 @@
-pipeline{
+pipeline {
 
 	agent none	
 	
-	stages{
+	stages {
 	
-	stage('Build c'){
+	stage('Build c') {
 	
 		agent { label 'slave1' }
-		steps{
+		steps {
 		     
 			 echo 'Building c-project'
 
@@ -37,7 +37,7 @@ pipeline{
 	
 		agent { label 'slave2' }
 
-		steps{
+		steps {
 		     
 			 echo 'Building JAVA project...'
 
@@ -64,6 +64,6 @@ pipeline{
 		}
 	}
 
-	}
+}
 
 }
