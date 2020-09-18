@@ -54,9 +54,8 @@ pipeline {
 								echo "Build Successful...!!!"
 								sleep 2
 								echo $PWD
-								cd java-new/target
 								echo "copying jar file to artifactory repo....!"
-								cp my-app-1.0-SNAPSHOT.jar /home/ec2-user/deployed_items
+								cp /home/ec2-user/slave2/workspace/pipeline_test/java-new/target/my-app-1.0-SNAPSHOT.jar /home/ec2-user/deployed_items
 								echo "Deployed Successful"
 							fi
 							
