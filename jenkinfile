@@ -54,6 +54,11 @@ pipeline {
 								echo "Build Successful"
 							fi
 							
+							if [[ -x "*.jar" ]]; then
+								echo "JAVA-project Build Successful...!"
+							else
+								echo "Build Failed ::: No jar file generated..!"
+							fi
 							
 					'''
 		}
