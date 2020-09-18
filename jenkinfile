@@ -24,9 +24,9 @@ pipeline{
 							fi
 							
 							if [[ -x "./ABC.exe" ]]; then
-								echo 'c-project Build Successful...!'
+								echo "c-project Build Successful...!"
 							else
-								echo 'Build Failed ::: No ABC.exe file generated..!'
+								echo "Build Failed ::: No executable file generated..!"
 							fi
 						
 							sleep 10
@@ -52,11 +52,11 @@ pipeline{
 								cd java-new
 								mvn install
 								if [[ $? -eq 0 ]]
-										echo 'Build Successful'
+										echo "Build Successful...'
 										cd target
-										echo 'copying jar file to artifactory repo....!'
+										echo "copying jar file to artifactory repo....!"
 										cp *.jar /home/ec2-user/slave2
-										echo 'Successfully deployed the jar file'						
+										echo "Successfully deployed the jar file"						
 							fi
 							
 							
