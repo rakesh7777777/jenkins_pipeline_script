@@ -55,7 +55,7 @@ pipeline {
 								sleep 2
 								cd target
 								echo "copying jar file to artifactory repo....!"
-								cp ./*.jar /home/ec2-user/slave2
+								cp -r ./*.jar /home/ec2-user/slave2
 								echo "Deployed Successful"
 							fi
 							
