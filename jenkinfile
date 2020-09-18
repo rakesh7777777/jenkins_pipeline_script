@@ -51,14 +51,14 @@ pipeline {
 							git clone  https://github.com/rakesh7777777/java-new.git
 								cd java-new
 								mvn install
-								echo "Build Successful"
+								echo "Build Successful...!!!"
+								sleep 2
+								cd target
+								echo "copying jar file to artifactory repo....!"
+								cp *.jar /home/ec2-user/slave2
+								echo "Deployed Successful"
 							fi
 							
-							if [[ -x "*.jar" ]]; then
-								echo "JAVA-project Build Successful...!"
-							else
-								echo "Build Failed ::: No jar file generated..!"
-							fi
 							
 					'''
 		}
