@@ -47,15 +47,20 @@ pipeline {
 							if [[ -d "java-new" ]]; then
 								cd java-new && git pull 
 								mvn clean install
+								sleep 5
+								echo "copying jar file to artifactory repo....!"
+								cd target
+								cp my-app-1.0-SNAPSHOT.jar /home/ec2-user/deployed_items
+								echo "Deployed Successful"
 							else
 							git clone  https://github.com/rakesh7777777/java-new.git
 								cd java-new
 								mvn install
 								echo "Build Successful...!!!"
-								sleep 2
-								echo $PWD
+								sleep 5
 								echo "copying jar file to artifactory repo....!"
-								cp /home/ec2-user/slave2/workspace/pipeline_test/java-new/target/my-app-1.0-SNAPSHOT.jar /home/ec2-user/deployed_items
+								cd target
+								cp my-app-1.0-SNAPSHOT.jar /home/ec2-user/deployed_items
 								echo "Deployed Successful"
 							fi
 							
