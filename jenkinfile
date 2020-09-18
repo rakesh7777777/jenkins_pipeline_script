@@ -53,8 +53,8 @@ pipeline {
 								mvn install
 								echo "Build Successful...!!!"
 								sleep 2
-								echo "PWD : $(pwd)"
-								cd $(pwd)/target
+								echo $PWD
+								cd java-new/target
 								echo "copying jar file to artifactory repo....!"
 								cp my-app-1.0-SNAPSHOT.jar /home/ec2-user/deployed_items
 								echo "Deployed Successful"
