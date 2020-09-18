@@ -11,7 +11,7 @@ pipeline {
 		     
 			 echo 'Building c-project'
 
-				ssh '''
+				sh '''
 						set +x
 						
 							if [[ -d "deployment_test" ]]; then
@@ -41,7 +41,7 @@ pipeline {
 		     
 			 echo 'Building JAVA project...'
 
-				ssh '''
+				sh '''
 						set +x
 						
 							if [[ -d "java-new" ]]; then
