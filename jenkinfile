@@ -1,0 +1,66 @@
+pipeline{
+
+	agent none	
+	
+	stage('Build c'){
+	
+		agent { label 'slave1' }
+		steps{
+		     
+			 echo 'Building c-project'
+
+				ssh '''
+						set +x
+						
+							if [[ -d "deployment_test" ]]; then
+								cd deployment_test && git pull 
+								make
+							else
+							git clone  https://github.com/rakesh7777777/deployment_test.git
+								cd deployment_test
+								make
+							fi
+							
+							if [[ -x "./ABC.exe" ]]; then
+								echo 'c-project Build Successful...!'
+							else
+								echo 'Build Failed ::: No ABC.exe file generated..!'
+							fi
+						
+							sleep 10
+					'''
+		}
+	}
+	stage('Build JAVA'){
+	
+		agent { label 'slave2' }
+
+		steps{
+		     
+			 echo 'Building JAVA project...'
+
+				ssh '''
+						set +x
+						
+							if [[ -d "java-new" ]]; then
+								cd java-new && git pull 
+								mvn clean install
+							else
+							git clone  https://github.com/rakesh7777777/java-new.git
+								cd java-new
+								mvn install
+								if [[ $? -eq 0 ]]
+										echo 'Build Successful'
+										cd target
+										echo 'copying jar file to artifactory repo....!'
+										cp *.jar /home/ec2-user/slave2
+										echo 'Successfully deployed the jar file'						
+							fi
+							
+							
+					'''
+		}
+	}
+
+
+}
