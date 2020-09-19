@@ -3,7 +3,7 @@ pipeline {
 	agent none	
 	
 	stages {
-		stage('Make and Maven){
+		stage('Make and Maven'){
 				parallel{
 						stage('Build c') {
 						
